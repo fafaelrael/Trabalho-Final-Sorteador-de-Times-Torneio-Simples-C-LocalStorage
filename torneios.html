@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Torneios</title>
+
+	<link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.html">Sorteador de Times</a>
+
+			<button class="navbar-toggler" type="text/button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-line"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="torneios.html">Torneios</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="jogadores.html">Jogadores</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="times.html">Times</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="partidas.html">Partidas</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container mt-4">
+		<div class="tab-content border p-3">
+			<h1 class="border-bottom text-center my-3">Torneios</h1>
+
+			<h2 class="border-bottom my-2">Selecionar torneio criado</h2>
+
+			<p id="torneioSelecionadoAtual">Nenhum torneio selecionado.</p>
+
+			<div class="table-responsive">
+				<table class="table table-striped" id="tabelaTorneios">
+					<thead class="table-dark">
+						<tr>
+							<th>Código</th>
+							<th>Nome</th>
+							<th>Num. Times</th>
+							<th>Num. Jogadores</th>
+							<th>Pontuação</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+
+			<div class="mb-3">
+				<label for="codigoAcaoTorneio" class="form-label">
+					Código do torneio
+				</label>
+
+				<input type="text" class="form-control" id="codigoAcaoTorneio"
+					placeholder="Digite o código de um torneio da tabela">
+			</div>
+
+			<button type="button" class="btn btn-primary" id="botaoSelecionarTorneio" onclick="selecionarTorneio()">
+				Selecionar
+			</button>
+
+			<button type="button" class="btn btn-danger" id="botaoExcluirTorneio" onclick="excluirTorneio()">
+				Excluir
+			</button>
+
+			<div class="form-check mt-2">
+				<input type="checkbox" class="form-check-input" id="confirmoExclusaoTorneio">
+
+				<label class="form-check-label" for="confirmoExclusaoTorneio">
+					Confirmo a exclusão (não pode ser desfeita)
+				</label>
+			</div>
+
+			<h2 class="border-bottom my-2 mt-4">Criar torneio</h2>
+
+			<form id="formTorneio" onsubmit="cadastrarTorneio(event)">
+				<div class="mb-3">
+					<label for="codigoTorneio" class="form-label">
+						Código do torneio (não pode repetir)
+					</label>
+
+					<input type="text" class="form-control" id="codigoTorneio" name="codigo" placeholder="Ex.: T01"
+						required>
+				</div>
+
+				<div class="mb-3">
+					<label for="nomeTorneio" class="form-label">
+						Nome do torneio
+					</label>
+
+					<input type="text" class="form-control" id="nomeTorneio" name="nome"
+						placeholder="Ex.: Torneio valendo uma coca" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="quantidadeTimes" class="form-label">
+						Quantidade de times
+					</label>
+
+					<input type="number" class="form-control" id="quantidadeTimes" name="quantidadeTimes" min="2"
+						value="2" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="jogadoresPorTime" class="form-label">
+						Jogadores por time
+					</label>
+
+					<input type="number" class="form-control" id="jogadoresPorTime" name="jogadoresPorTime" min="1"
+						value="5" required>
+				</div>
+
+				<div class="form-check mb-3">
+					<input type="checkbox" class="form-check-input" id="usarPontuacao" name="usarPontuacao" checked>
+
+					<label class="form-check-label" for="usarPontuacao">
+						Utilizar pontuação dos jogadores
+					</label>
+				</div>
+
+				<div class="mb-3">
+					<label for="descricao" class="form-label">Descrição do Torneio (Opcional)</label>
+					<textarea rows="3" class="form-control" id="descricao" name="descricao"></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-primary">
+					Criar torneio
+				</button>
+			</form>
+
+			<p id="mensagemTorneio" class="text-primary mt-3" role="status"></p>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="js/biblioteca.js"></script>
+	<script type="text/javascript" src="js/torneios.js"></script>
+</body>
+
+</html>
